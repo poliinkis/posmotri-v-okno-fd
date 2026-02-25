@@ -59,7 +59,6 @@ ol {
   align-items: center;
   width: 1140px;
   gap: 30px;
-  padding-right: 30px;
 }
 
 .content__details {
@@ -146,7 +145,6 @@ ol {
 
 .result {
   padding-top: 78px;
-  padding-left: 30px;
   display: grid;
   align-items: flex-end;
 }
