@@ -76,11 +76,11 @@ ol {
   flex-direction: column;
   height: 298px;
   gap: 30px;
+  overflow-y: auto;
 }
 
 .content__list {
   display: grid;
-  overflow-y: auto;
   gap: 22px; /* хотя по макету 30px, но у меня тогда не сходится*/
 }
 
@@ -114,6 +114,7 @@ ol {
   display: flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 }
 
 .search-form:focus {
@@ -131,6 +132,7 @@ ol {
 
 .search-form__fieldset-title {
   font-size: 18px;
+  font-weight: 400;
   line-height: 100%;
   color: #FFFFFF;
   margin-bottom: 5px;
@@ -145,6 +147,8 @@ ol {
 .result {
   padding-top: 78px;
   padding-left: 30px;
+  display: grid;
+  align-items: flex-end;
 }
 
 .result__video-container {
@@ -187,14 +191,17 @@ ol {
 
 .content__video-card-description {
   color: #fff;
-  font-family: Fira Machine, Fira Sans Condensed, sans-serif;
+  font-family: 'Fira Machine', 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-weight: 400;
   text-align: left;
   line-height: 16.2px;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* не понимаю, как с помощью line-clamp учесть возможность переполнения*/
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 
 .content__card-link {
@@ -205,9 +212,25 @@ ol {
   cursor: pointer;
 }
 
-.content__card-link_current {
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
   background-color: #545050;
 }
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+
+/*.content__card-link_current {
+  background-color: #545050;
+}*/
 
 .visually-hidden {
   position: absolute;
@@ -228,17 +251,16 @@ ol {
   cursor: text;
   color: #fff;
   padding: 5px;
+  font-family: inherit;
+  font-size: 16px; /*по макету 18, но тогда с макетом отличается...сделала меньше, мысленно обсудила с дизайнером*/
+  font-weight: inherit;
+  text-align: left;
+  appearance: none;
 }
 
 .search-form__textfield::placeholder {
   color: rgb(255 255 255 / 0.7);
-  font-family: Fira Sans Condensed, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: left;
-  line-height: 100%;
   background-color: transparent;
-  appearance: none;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -250,7 +272,7 @@ ol {
   height: 19px;
   border: 1px solid #fff;
   padding: 1px;
-  cursor: pointer;
+  position: relative;
 }
 
 .search-form__pseudo-checkbox::after {
@@ -262,6 +284,11 @@ ol {
   opacity: 0;
 }
 
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  color: #fff;
+  opacity: 1;
+}
+
 .search-form__pseudo-checkbox.checked::after {
   opacity: 1;
 }
@@ -269,7 +296,7 @@ ol {
 .button {
   border: 1px solid #fff;
   background-color: transparent;
-  font-family: Fira Sans Condensed, sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -288,7 +315,7 @@ ol {
 .button.more-button {
   display: inline-block;
   width: 390px;
-  height: 34px;
+  min-height: 34px;
   padding-top: 6px;
   padding-bottom: 6px;
   text-align: center;
@@ -301,7 +328,7 @@ ol {
 }
 
 .button:focus-visible {
-  outline: 2px solid #fff;
+  outline: 1px solid #fff;
   outline-offset: 2px;
 }
 
