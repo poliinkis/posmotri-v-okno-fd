@@ -315,3 +315,5 @@ ol {
 .result__video-container {
   position: relative;
 }
+
+/*строчка для загрузки файла, так как выдает ошибку*/
