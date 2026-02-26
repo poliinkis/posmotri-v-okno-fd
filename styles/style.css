@@ -83,6 +83,11 @@ ol {
   gap: 22px; /* хотя по макету 30px, но у меня тогда не сходится*/
 }
 
+.content__list-item {
+  padding-left: 2px;
+  padding-right: 3px;
+}
+
 .content__video-card {
   display: flex;
   flex-direction: row;
@@ -118,6 +123,11 @@ ol {
 
 .search-form:focus {
   outline: none;
+}
+
+.search-form__label:hover {
+  text-decoration: underline;
+  text-decoration-color: #fff;
 }
 
 .search-form__label:focus:has(:focus-visible) {
@@ -210,25 +220,21 @@ ol {
   cursor: pointer;
 }
 
-.content__card-link:hover {
+.content__card-link_current:hover {
   text-decoration: underline;
 }
 
-.content__card-link:active {
-  background-color: #545050;
-}
-
-.content__card-link:focus {
+.content__card-link_current:focus {
   outline: none;
 }
 
-.content__card-link:focus-visible {
+.content__card-link_current:focus-visible {
   outline: 1px solid #fff;
 }
 
-/*.content__card-link_current {
+.content__card-link_current:active {
   background-color: #545050;
-}*/
+}
 
 .visually-hidden {
   position: absolute;
@@ -245,12 +251,14 @@ ol {
   background-color: transparent;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
+  border-right: none;
+  border-left: none;
   outline: none;
   cursor: text;
   color: #fff;
-  padding: 5px;
+  padding: 5px 0px;
   font-family: inherit;
-  font-size: 16px; /*по макету 18, но тогда с макетом отличается...сделала меньше, мысленно обсудила с дизайнером*/
+  font-size: 18px;
   font-weight: inherit;
   text-align: left;
   appearance: none;
